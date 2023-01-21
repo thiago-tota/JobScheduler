@@ -1,0 +1,52 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, scheduler!</h1>
+
+@if (schedulerHistory == null)
+{
+    <p>Loading scheduler history!</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Job Name</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in schedulerHistory)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.TimeStart</td>
+                    <td>@item.TimeEnd</td>
+                    <td class="@GetStatusColor(item.Status)">@item.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<JobDto>? schedulerHistory;
+
+    protected override async Task OnInitializedAsync()
+    {
+        schedulerHistory = await ApiService.GetSchedulerHistory();
+    }
+
+    private string GetStatusColor(JobStatus status) =>
+        status switch
+        {
+            JobStatus.Run => "text-primary",
+            JobStatus.Success => "text-success",
+            JobStatus.Fail => "text-danger",
+            _ => ""
+        };
+}

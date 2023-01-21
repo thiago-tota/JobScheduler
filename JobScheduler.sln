@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobScheduler.Server", "src\JobScheduler.Server\JobScheduler.Server.csproj", "{9C6A7806-D487-4356-AB6A-F4C405559526}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FD7C3527-1E30-4EEC-A01E-0C75F5E0DDBA} = {FD7C3527-1E30-4EEC-A01E-0C75F5E0DDBA}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobScheduler.Client", "src\JobScheduler.Client\JobScheduler.Client.csproj", "{A7655439-83D5-4EA0-B39F-4267D726750B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobScheduler.Core", "src\JobScheduler.Core\JobScheduler.Core.csproj", "{6C4B999A-7A18-40FE-BFE4-18E701D4DFB6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobScheduler.Infraestructure", "src\JobScheduler.Infraestructure\JobScheduler.Infraestructure.csproj", "{FD7C3527-1E30-4EEC-A01E-0C75F5E0DDBA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{57AC400F-10B7-4188-9259-9C7C208D56A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0A137A66-66C6-49B3-85E8-10436E233152}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C6A7806-D487-4356-AB6A-F4C405559526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C6A7806-D487-4356-AB6A-F4C405559526}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C6A7806-D487-4356-AB6A-F4C405559526}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C6A7806-D487-4356-AB6A-F4C405559526}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7655439-83D5-4EA0-B39F-4267D726750B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7655439-83D5-4EA0-B39F-4267D726750B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7655439-83D5-4EA0-B39F-4267D726750B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7655439-83D5-4EA0-B39F-4267D726750B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C4B999A-7A18-40FE-BFE4-18E701D4DFB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C4B999A-7A18-40FE-BFE4-18E701D4DFB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C4B999A-7A18-40FE-BFE4-18E701D4DFB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C4B999A-7A18-40FE-BFE4-18E701D4DFB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD7C3527-1E30-4EEC-A01E-0C75F5E0DDBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD7C3527-1E30-4EEC-A01E-0C75F5E0DDBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD7C3527-1E30-4EEC-A01E-0C75F5E0DDBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD7C3527-1E30-4EEC-A01E-0C75F5E0DDBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {292A8B8B-720C-495B-B17F-6965A9EA08AF}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A7655439-83D5-4EA0-B39F-4267D726750B} = {57AC400F-10B7-4188-9259-9C7C208D56A4}
+		{6C4B999A-7A18-40FE-BFE4-18E701D4DFB6} = {57AC400F-10B7-4188-9259-9C7C208D56A4}
+		{FD7C3527-1E30-4EEC-A01E-0C75F5E0DDBA} = {57AC400F-10B7-4188-9259-9C7C208D56A4}
+		{9C6A7806-D487-4356-AB6A-F4C405559526} = {57AC400F-10B7-4188-9259-9C7C208D56A4}
+	EndGlobalSection
+EndGlobal
