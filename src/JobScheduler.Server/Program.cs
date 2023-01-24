@@ -1,4 +1,5 @@
 
+using JobScheduler.Core;
 using JobScheduler.Infraestructure.Data;
 using JobScheduler.Server;
 using Microsoft.Data.Sqlite;
@@ -12,7 +13,7 @@ builder.Host.UseWindowsService();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
-builder.Services.AddJobs();
+builder.Services.AddJobs(builder.Configuration);
 
 const string connectionString = "DataSource=myshareddb;mode=memory;cache=shared";
 var keepAliveConnection = new SqliteConnection(connectionString);

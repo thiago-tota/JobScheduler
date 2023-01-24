@@ -8,7 +8,8 @@
 
         protected override string JobName => nameof(IntervalExampleJob);
 
-        public IntervalExampleJob(ILogger<IntervalExampleJob> logger, IServiceProvider serviceProvider) : base(logger, serviceProvider, _intervalInSeconds)
+        public IntervalExampleJob(ILogger<IntervalExampleJob> logger, IServiceProvider serviceProvider) 
+            : base(logger, serviceProvider, _intervalInSeconds)
         {
             _logger = logger;
         }

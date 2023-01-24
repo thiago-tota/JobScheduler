@@ -12,6 +12,7 @@ namespace JobScheduler.Server.Jobs
 
         private readonly int? _intervalInSeconds;
         private readonly TimeOnly? _runTime;
+
         public JobBase(ILogger<JobBase> logger, IServiceProvider serviceProvider, int intervalInSeconds)
         {
             _logger = logger;
@@ -66,7 +67,7 @@ namespace JobScheduler.Server.Jobs
 
         private async Task RunJob(CancellationToken stoppingToken)
         {
-            _logger.LogInformation("Job {1} started at time {2}", JobName, DateTime.Now);
+            _logger.LogInformation($"Job {JobName} started at time {DateTime.Now}");
             var entity = new RunHistory
             {
                 JobName = JobName,
@@ -74,7 +75,7 @@ namespace JobScheduler.Server.Jobs
             };
 
             await JobAsync(stoppingToken);
-            _logger.LogInformation("Job {1} finished at time {2}", JobName, DateTime.Now);
+            _logger.LogInformation($"Job {JobName} finished at time {DateTime.Now}");
 
             entity.EndTime = DateTime.Now;
             entity.Status = JobStatus.Run;
@@ -85,7 +86,7 @@ namespace JobScheduler.Server.Jobs
                 dbContext.RunHistory.Add(entity);
                 await dbContext.SaveChangesAsync();
             }
-            _logger.LogInformation("Job {1} result written to DB.", JobName);
+            _logger.LogInformation($"Job {JobName} result written to DB at time {DateTime.Now}");
         }
 
         private TimeSpan GetDelayUntilNextRun()
