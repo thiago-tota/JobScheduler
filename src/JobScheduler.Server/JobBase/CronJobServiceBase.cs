@@ -1,21 +1,31 @@
 ﻿using Cronos;
+using JobScheduler.Core.Enums;
+using JobScheduler.Infraestructure.Data;
 
-namespace JobScheduler.Server.Jobs
+namespace JobScheduler.Server.JobBase
 {
-    public abstract class CronJobService : IHostedService, IDisposable
+    public abstract class CronJobServiceBase : IHostedService, IDisposable
     {
         private System.Timers.Timer? _timer;
         private readonly CronExpression _expression;
         private readonly TimeZoneInfo _timeZoneInfo;
 
-        protected CronJobService(string cronExpression, TimeZoneInfo timeZoneInfo)
+        private readonly ILogger<CronJobServiceBase> _logger;
+        private readonly IServiceProvider _serviceProvider;
+
+        protected abstract string JobName { get; }
+
+        protected CronJobServiceBase(ILogger<CronJobServiceBase> logger, IServiceProvider serviceProvider, string cronExpression, TimeZoneInfo timeZoneInfo)
         {
+            _logger = logger;
+            _serviceProvider = serviceProvider;
             _expression = CronExpression.Parse(cronExpression);
             _timeZoneInfo = timeZoneInfo;
         }
 
         public virtual async Task StartAsync(CancellationToken cancellationToken)
         {
+            _logger.LogInformation($"Job {JobName} is starting at time {DateTime.Now}.");
             await ScheduleJob(cancellationToken);
         }
 
@@ -37,7 +47,7 @@ namespace JobScheduler.Server.Jobs
 
                     if (!cancellationToken.IsCancellationRequested)
                     {
-                        await DoWork(cancellationToken);
+                        await ExecuteJob(cancellationToken);
                     }
 
                     if (!cancellationToken.IsCancellationRequested)
@@ -57,6 +67,7 @@ namespace JobScheduler.Server.Jobs
 
         public virtual async Task StopAsync(CancellationToken cancellationToken)
         {
+            _logger.LogInformation($"Job {JobName} is stopping at time {DateTime.Now}.");
             _timer?.Stop();
             await Task.CompletedTask;
         }
@@ -65,6 +76,33 @@ namespace JobScheduler.Server.Jobs
         {
             _timer?.Dispose();
             GC.SuppressFinalize(this);
+        }
+
+        private async Task ExecuteJob(CancellationToken cancellationToken)
+        {
+            _logger.LogInformation($"Job {JobName} execution started at time {DateTime.Now}");
+
+            var entity = new RunHistory
+            {
+                JobName = JobName,
+                StartTime = DateTime.Now,
+            };
+
+            await DoWork(cancellationToken);
+            _logger.LogInformation($"Job {JobName} execution finished at time {DateTime.Now}");
+
+            entity.EndTime = DateTime.Now;
+            entity.Status = JobStatus.Run;
+
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<JobSchedulerDbContext>();
+                await dbContext.Database.EnsureCreatedAsync(cancellationToken);
+                dbContext.RunHistory.Add(entity);
+                await dbContext.SaveChangesAsync(cancellationToken);
+            }
+
+            _logger.LogInformation($"Job {JobName} result written to DB at time {DateTime.Now}");
         }
     }
 }

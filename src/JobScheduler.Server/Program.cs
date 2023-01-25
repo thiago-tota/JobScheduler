@@ -1,7 +1,6 @@
-
 using JobScheduler.Core;
 using JobScheduler.Infraestructure.Data;
-using JobScheduler.Server;
+using JobScheduler.Server.Extensions;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
@@ -47,3 +46,5 @@ app.MapControllers();
 app.MapFallbackToFile("index.html");
 
 app.Run();
+
+public partial class Program { }

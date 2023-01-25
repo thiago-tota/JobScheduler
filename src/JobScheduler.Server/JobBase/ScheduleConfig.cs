@@ -1,6 +1,4 @@
-﻿using JobScheduler.Core;
-
-namespace JobScheduler.Server.Jobs
+﻿namespace JobScheduler.Server.JobBase
 {
     public class ScheduleConfig<T> : IScheduleConfig<T>
     {

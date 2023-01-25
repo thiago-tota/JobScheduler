@@ -1,4 +1,4 @@
-﻿namespace JobScheduler.Core
+﻿namespace JobScheduler.Server.JobBase
 {
     public interface IScheduleConfig<T>
     {

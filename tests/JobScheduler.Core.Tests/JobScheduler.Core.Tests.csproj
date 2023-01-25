@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="..\src\JobScheduler.Server\appsettings.json" Link="appsettings.json">
+    <Content Include="..\..\src\JobScheduler.Server\appsettings.json" Link="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -33,7 +33,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\JobScheduler.Core\JobScheduler.Core.csproj" />
+    <ProjectReference Include="..\..\src\JobScheduler.Core\JobScheduler.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

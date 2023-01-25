@@ -18,9 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{57AC400F-10B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0A137A66-66C6-49B3-85E8-10436E233152}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobScheduler.Server.Tests", "JobScheduler.Server.Tests\JobScheduler.Server.Tests.csproj", "{06A9E2FF-B491-40C1-A563-99925A074A9E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobScheduler.Core.Tests", "JobScheduler.Core.Tests\JobScheduler.Core.Tests.csproj", "{1EDC6D9C-1897-454F-9F73-27FF151A343F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobScheduler.Server.Tests", "tests\JobScheduler.Server.Tests\JobScheduler.Server.Tests.csproj", "{06A9E2FF-B491-40C1-A563-99925A074A9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,10 +46,6 @@ Global
 		{06A9E2FF-B491-40C1-A563-99925A074A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06A9E2FF-B491-40C1-A563-99925A074A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06A9E2FF-B491-40C1-A563-99925A074A9E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1EDC6D9C-1897-454F-9F73-27FF151A343F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1EDC6D9C-1897-454F-9F73-27FF151A343F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1EDC6D9C-1897-454F-9F73-27FF151A343F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1EDC6D9C-1897-454F-9F73-27FF151A343F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,7 +56,6 @@ Global
 		{6C4B999A-7A18-40FE-BFE4-18E701D4DFB6} = {57AC400F-10B7-4188-9259-9C7C208D56A4}
 		{FD7C3527-1E30-4EEC-A01E-0C75F5E0DDBA} = {57AC400F-10B7-4188-9259-9C7C208D56A4}
 		{06A9E2FF-B491-40C1-A563-99925A074A9E} = {0A137A66-66C6-49B3-85E8-10436E233152}
-		{1EDC6D9C-1897-454F-9F73-27FF151A343F} = {0A137A66-66C6-49B3-85E8-10436E233152}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {292A8B8B-720C-495B-B17F-6965A9EA08AF}
